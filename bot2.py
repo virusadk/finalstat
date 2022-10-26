@@ -16,7 +16,7 @@ def format_message_fora(message,period):
             f'\U0001F3C6 {L} \n' \
             f'\U0001F9D1 {O1} - {O2}\U0001F9D1 \n' \
                 f'\U0001F9FE 1- Партия:{S1} - {S2}\n' \
-                f'\U0001F9FE 2- Партия:{S21} - {S22}\n' \
+                    f'\U0001F9FE 2- Партия:{S21} - {S22}\n' \
             f'\n' \
                 f'\U0001F9FE Стратегия:{STR}\n' \
                         f'\n' \
@@ -90,7 +90,7 @@ def format_message(message,period):
     
     
     
-        SN, L, O1, O2,S,CPS,S1,S2,ST,STR = message.values()
+        SN, L, O1, O2,S,CPS,S1,S2,S21,S22,ST,STR = message.values()
         SP = S + 3*60*60
         Stime = datetime.fromtimestamp(SP).strftime('%d.%m %H:%M')
    
@@ -98,6 +98,7 @@ def format_message(message,period):
                 f'\U0001F3C6 {L} \n' \
                 f'\U0001F9D1 {O1} - {O2}\U0001F9D1 \n' \
                     f'\U0001F9FE 1- Партия:{S1} - {S2}\n' \
+                        f'\U0001F9FE 2- Партия:{S21} - {S22}\n' \
                 f'\n' \
                     f'\U0001F9FE Стратегия:{STR}\n' \
                         f'\n' \
@@ -166,8 +167,6 @@ def prov_pobed(pobeda,idlive,period):
                         message['CPS'] = period['SC']['CPS']
                         message['S1'] = period['SC']['PS'][0]['Value']['S1']
                         message['S2'] = period['SC']['PS'][0]['Value']['S2']
-                        message['S21'] = period['SC']['PS'][1]['Value']['S1']
-                        message['S22'] = period['SC']['PS'][1]['Value']['S2']
                         
                         message['ST'] = 'П2'
                         message['STR'] = 'Есть фаворит'
@@ -217,8 +216,7 @@ def prov_pobed(pobeda,idlive,period):
                         message['CPS'] = period['SC']['CPS']
                         message['S1'] = period['SC']['PS'][0]['Value']['S1']
                         message['S2'] = period['SC']['PS'][0]['Value']['S2']
-                        message['S21'] = period['SC']['PS'][1]['Value']['S1']
-                        message['S22'] = period['SC']['PS'][1]['Value']['S2']
+                        
                         message['ST'] = 'П1'
                         message['STR'] = 'Есть фаворит'
                         format_message_fora(message,period)
