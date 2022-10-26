@@ -16,6 +16,7 @@ def format_message_fora(message,period):
             f'\U0001F3C6 {L} \n' \
             f'\U0001F9D1 {O1} - {O2}\U0001F9D1 \n' \
                 f'\U0001F9FE 1- Партия:{S1} - {S2}\n' \
+                f'\U0001F9FE 2- Партия:{S21} - {S22}\n' \
             f'\n' \
                 f'\U0001F9FE Стратегия:{STR}\n' \
                         f'\n' \
