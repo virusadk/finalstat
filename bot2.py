@@ -8,7 +8,7 @@ from telegramchannel import send_channel
 
 def format_message_fora(message,period):
     
-    SN, L, O1, O2,S,CPS,S1,S2,ST,STR = message.values()
+    SN, L, O1, O2,S,CPS,S1,S2,S21,S22,ST,STR = message.values()
     SP = S + 3*60*60
     Stime = datetime.fromtimestamp(SP).strftime('%d.%m %H:%M')
 
@@ -165,6 +165,8 @@ def prov_pobed(pobeda,idlive,period):
                         message['CPS'] = period['SC']['CPS']
                         message['S1'] = period['SC']['PS'][0]['Value']['S1']
                         message['S2'] = period['SC']['PS'][0]['Value']['S2']
+                        message['S21'] = period['SC']['PS'][1]['Value']['S1']
+                        message['S22'] = period['SC']['PS'][1]['Value']['S2']
                         
                         message['ST'] = 'П2'
                         message['STR'] = 'Есть фаворит'
@@ -214,7 +216,8 @@ def prov_pobed(pobeda,idlive,period):
                         message['CPS'] = period['SC']['CPS']
                         message['S1'] = period['SC']['PS'][0]['Value']['S1']
                         message['S2'] = period['SC']['PS'][0]['Value']['S2']
-                        
+                        message['S21'] = period['SC']['PS'][1]['Value']['S1']
+                        message['S22'] = period['SC']['PS'][1]['Value']['S2']
                         message['ST'] = 'П1'
                         message['STR'] = 'Есть фаворит'
                         format_message_fora(message,period)
@@ -278,6 +281,8 @@ def poisk_pred_total(idlive,period,pobed):
                         message['CPS'] = period['SC']['CPS']
                         message['S1'] = period['SC']['PS'][0]['Value']['S1']
                         message['S2'] = period['SC']['PS'][0]['Value']['S2']
+                        message['S21'] = period['SC']['PS'][1]['Value']['S1']
+                        message['S22'] = period['SC']['PS'][1]['Value']['S2']
                         message['ST'] = 'П2'
                         message['STR'] = 'Игроки равны'
                         format_message(message,period)
@@ -301,6 +306,8 @@ def poisk_pred_total(idlive,period,pobed):
                         message['CPS'] = period['SC']['CPS']
                         message['S1'] = period['SC']['PS'][0]['Value']['S1']
                         message['S2'] = period['SC']['PS'][0]['Value']['S2']
+                        message['S21'] = period['SC']['PS'][1]['Value']['S1']
+                        message['S22'] = period['SC']['PS'][1]['Value']['S2']
                         message['ST'] = 'П1'
                         message['STR'] = 'Игроки равны'
                         format_message(message,period)
