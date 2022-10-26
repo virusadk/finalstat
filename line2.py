@@ -119,7 +119,7 @@ def igra(resultline):
                 kef1 = kef[0]
                 kef2 = kef[1]
                 # print(kef1,'-',kef2)              
-                if (float(kef1) >= 1.83) and (float(kef2) >= 1.83):
+                if ((float(kef1) >= 1.65) and (float(kef1) <= 1.8)) or ((float(kef2) >= 1.65) and (float(kef2) <= 1.8)):
                     # print('Игроки равны')
                     id = game['I']
                     try:
@@ -133,7 +133,7 @@ def igra(resultline):
                     pass
                     # print('Есть аутсайдер') 
 
-                if (float(kef1) >= 3) or (float(kef2) >= 3):
+                if (float(kef1) >= 2.5) or (float(kef2) >= 2.5):
                 # if (float(kef1) >= 2) or (float(kef2) >= 2):
                     # print('Игроки равны'):
                     # print('Игроки равны')
