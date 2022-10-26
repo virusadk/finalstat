@@ -326,7 +326,7 @@ def format_message_result(message,idl,period):
                     send_telegram(mess)
                     send_channel(mess)
                     
-                    format_stat_rav()
+                    format_stat()
                     
 
                     # print('send')            
