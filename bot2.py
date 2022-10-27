@@ -210,24 +210,30 @@ def prov_pobed(pobeda,idlive,period):
                             response = requests.get('https://1xstavka.ru/LiveFeed/GetGameZip', params=params,  headers=headers)
                             resultgame = response.json()
                             keffchik = []
-                            for igra in resultgame['SG']:
+                            for igra in resultgame['Value']['SG']:
                                 pn = igra['PN']
-                                if '3-я Партия' in pn:
+                                print(pn)
+                                if '4-я Партия' in pn:
                                     for keff in igra['GE']:
                                         g = keff['G']
+                                        print(g)
                                         if g == 1:
-                                            k = tot['C']
-                                            keffchik.append(k)
+                                            for gh in keff['E']:
+                                                print(gh)
+                                                k = gh[0]['C']
+                                                print(k)
+                                                keffchik.append(k)
 
 
 
                                     # print(kef)                     
                                     kefp1 = keffchik[0]
-                                    kefp2 = keffchik[1] 
+                                    kefp2 = keffchik[1]
+                                    print(kefp1,'-',kefp2) 
                         except:
                             kefp1 = ' '
                             kefp2 = ' '
-                                
+        
 
                         
                         message = {}
@@ -398,20 +404,26 @@ def poisk_pred_total(idlive,period,pobed):
                         response = requests.get('https://1xstavka.ru/LiveFeed/GetGameZip', params=params,  headers=headers)
                         resultgame = response.json()
                         keffchik = []
-                        for igra in resultgame['SG']:
+                        for igra in resultgame['Value']['SG']:
                             pn = igra['PN']
-                            if '3-я Партия' in pn:
+                            print(pn)
+                            if '4-я Партия' in pn:
                                 for keff in igra['GE']:
                                     g = keff['G']
+                                    print(g)
                                     if g == 1:
-                                        k = tot['C']
-                                        keffchik.append(k)
+                                        for gh in keff['E']:
+                                            print(gh)
+                                            k = gh[0]['C']
+                                            print(k)
+                                            keffchik.append(k)
 
 
 
                                 # print(kef)                     
                                 kefp1 = keffchik[0]
-                                kefp2 = keffchik[1] 
+                                kefp2 = keffchik[1]
+                                print(kefp1,'-',kefp2) 
                     except:
                         kefp1 = ' '
                         kefp2 = ' '
