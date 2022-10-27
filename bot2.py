@@ -213,7 +213,7 @@ def prov_pobed(pobeda,idlive,period):
                             for igra in resultgame['Value']['SG']:
                                 pn = igra['PN']
                                 print(pn)
-                                if '4-я Партия' in pn:
+                                if '3-я Партия' in pn:
                                     for keff in igra['GE']:
                                         g = keff['G']
                                         print(g)
@@ -407,7 +407,7 @@ def poisk_pred_total(idlive,period,pobed):
                         for igra in resultgame['Value']['SG']:
                             pn = igra['PN']
                             print(pn)
-                            if '4-я Партия' in pn:
+                            if '3-я Партия' in pn:
                                 for keff in igra['GE']:
                                     g = keff['G']
                                     print(g)
