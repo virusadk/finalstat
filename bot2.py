@@ -8,7 +8,7 @@ from telegramchannel import send_channel
 
 def format_message_fora(message,period):
     
-    SN, L, O1, O2,S,CPS,S1,S2,S21,S22,ST,STR,K1,K2 = message.values()
+    SN, L, O1, O2,S,CPS,S1,S2,S21,S22,ST,STR,K1,K2,KST = message.values()
     SP = S + 3*60*60
     Stime = datetime.fromtimestamp(SP).strftime('%d.%m %H:%M')
 
@@ -21,7 +21,7 @@ def format_message_fora(message,period):
                 f'\U0001F9FE Стратегия:{STR}\n' \
                     f'\U0001F9FE Коэффициенты :{K1} - {K2}\n' \
                         f'\n' \
-                f'\U0001F4B5 Ставка: 3-сет {ST}\n' \
+                f'\U0001F4B5 Ставка: 3-сет {ST} \U0001F4B5 Кеф: {KST}\n' \
                     f'\n' \
             
             
@@ -93,7 +93,7 @@ def format_message(message,period):
     
     
     
-        SN, L, O1, O2,S,CPS,S1,S2,S21,S22,ST,STR,K1,K2 = message.values()
+        SN, L, O1, O2,S,CPS,S1,S2,S21,S22,ST,STR,K1,K2,KST = message.values()
         SP = S + 3*60*60
         Stime = datetime.fromtimestamp(SP).strftime('%d.%m %H:%M')
    
@@ -106,7 +106,7 @@ def format_message(message,period):
                     f'\U0001F9FE Стратегия:{STR}\n' \
                         f'\U0001F9FE Коэффициенты :{K1} - {K2}\n' \
                         f'\n' \
-                    f'\U0001F4B5 Ставка: 3-сет {ST}\n' \
+                    f'\U0001F4B5 Ставка: 3-сет {ST} \U0001F4B5 Кеф: {KST}\n' \
                         f'\n' \
                
                 
@@ -169,11 +169,64 @@ def prov_pobed(pobeda,idlive,period):
                                 k = tot['C']
                                 kef.append(k)
 
-
-
+                        
                         # print(kef)                     
                         kef1 = kef[0]
                         kef2 = kef[1]
+
+                        headers = {
+                            'Accept': 'application/json, text/plain, */*',
+                            'Accept-Language': 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7',
+                            'Cache-Control': 'max-age=0',
+                            'Connection': 'keep-alive',
+                            # Requests sorts cookies= alphabetically
+                            # 'Cookie': 'lng=ru; flaglng=ru; tzo=3; typeBetNames=short; auid=WNT5lGM/wTi3nUhsyj63Ag==; _ym_uid=1665122621415459923; _ym_d=1665122621; _ga=GA1.2.1498550217.1665122621; sh.session=d5016e9f-8661-4690-96a9-27aa3a14bb09; pushfree_status=canceled; right_side=right; fast_coupon=true; SESSION=178f7e31b81ce6fc219e4b43a05c475f; visit=1-f8d39eadc3a15b2b834eb0c195bed585; completed_user_settings=true; _gid=GA1.2.329207666.1666705462; _ym_isad=2; v3fr=1; coefview=0; _ym_visorc=w; _glhf=1666886418; ggru=188; _gat_gtag_UA_131611796_1=1',
+                            'If-Modified-Since': 'Sat, 1 Jan 2000 00:00:00 GMT',
+                            'Referer': 'https://1xstavka.ru/live/table-tennis/2064427-masters/407659157-sergey-varfolomeev-a-viktor-maly',
+                            'Sec-Fetch-Dest': 'empty',
+                            'Sec-Fetch-Mode': 'cors',
+                            'Sec-Fetch-Site': 'same-origin',
+                            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36',
+                            'X-Requested-With': 'XMLHttpRequest',
+                            'sec-ch-ua': '"Chromium";v="106", "Google Chrome";v="106", "Not;A=Brand";v="99"',
+                            'sec-ch-ua-mobile': '?0',
+                            'sec-ch-ua-platform': '"Windows"',
+                        }
+
+                        params = {
+                            'id': idlive,
+                            'lng': 'ru',
+                            'cfview': '0',
+                            'isSubGames': 'true',
+                            'GroupEvents': 'true',
+                            'allEventsGroupSubGames': 'true',
+                            'countevents': '250',
+                            'partner': '51',
+                            'grMode': '2',
+                            'marketType': '1',
+                            'isNewBuilder': 'true',
+                        }
+
+                        response = requests.get('https://1xstavka.ru/LiveFeed/GetGameZip', params=params,  headers=headers)
+                        resultgame = response.json()
+                        keffchik = []
+                        for igra in resultgame['SG']:
+                            pn = igra['PN']
+                            if pn == '3-я Партия':
+                                for keff in igra['GE']:
+                                    g = keff['G']
+                                    if g == 1:
+                                        k = tot['C']
+                                        keffchik.append(k)
+
+
+
+                                # print(kef)                     
+                                kefp1 = keffchik[0]
+                                kefp2 = keffchik[1] 
+                            
+
+                        
                         message = {}
                                         
                         message['SN'] = period['SN']
@@ -189,6 +242,7 @@ def prov_pobed(pobeda,idlive,period):
                         message['STR'] = 'Есть фаворит'
                         message['K1'] = kef1
                         message['K2'] = kef2
+                        message['KST'] = kefp2
                         format_message_fora(message,period)
                         print('Отправлено на форматирование') 
                         try:    
@@ -240,6 +294,7 @@ def prov_pobed(pobeda,idlive,period):
                         message['STR'] = 'Есть фаворит'
                         message['K1'] = kef1
                         message['K2'] = kef2
+                        message['KST'] = kefp1
                         format_message_fora(message,period)
                         print('Отправлено на форматирование') 
                         try:    
@@ -303,6 +358,58 @@ def poisk_pred_total(idlive,period,pobed):
                     # print(kef)                     
                     kef1 = kef[0]
                     kef2 = kef[1]
+                    
+                    headers = {
+                            'Accept': 'application/json, text/plain, */*',
+                            'Accept-Language': 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7',
+                            'Cache-Control': 'max-age=0',
+                            'Connection': 'keep-alive',
+                            # Requests sorts cookies= alphabetically
+                            # 'Cookie': 'lng=ru; flaglng=ru; tzo=3; typeBetNames=short; auid=WNT5lGM/wTi3nUhsyj63Ag==; _ym_uid=1665122621415459923; _ym_d=1665122621; _ga=GA1.2.1498550217.1665122621; sh.session=d5016e9f-8661-4690-96a9-27aa3a14bb09; pushfree_status=canceled; right_side=right; fast_coupon=true; SESSION=178f7e31b81ce6fc219e4b43a05c475f; visit=1-f8d39eadc3a15b2b834eb0c195bed585; completed_user_settings=true; _gid=GA1.2.329207666.1666705462; _ym_isad=2; v3fr=1; coefview=0; _ym_visorc=w; _glhf=1666886418; ggru=188; _gat_gtag_UA_131611796_1=1',
+                            'If-Modified-Since': 'Sat, 1 Jan 2000 00:00:00 GMT',
+                            'Referer': 'https://1xstavka.ru/live/table-tennis/2064427-masters/407659157-sergey-varfolomeev-a-viktor-maly',
+                            'Sec-Fetch-Dest': 'empty',
+                            'Sec-Fetch-Mode': 'cors',
+                            'Sec-Fetch-Site': 'same-origin',
+                            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36',
+                            'X-Requested-With': 'XMLHttpRequest',
+                            'sec-ch-ua': '"Chromium";v="106", "Google Chrome";v="106", "Not;A=Brand";v="99"',
+                            'sec-ch-ua-mobile': '?0',
+                            'sec-ch-ua-platform': '"Windows"',
+                        }
+
+                    params = {
+                            'id': idlive,
+                            'lng': 'ru',
+                            'cfview': '0',
+                            'isSubGames': 'true',
+                            'GroupEvents': 'true',
+                            'allEventsGroupSubGames': 'true',
+                            'countevents': '250',
+                            'partner': '51',
+                            'grMode': '2',
+                            'marketType': '1',
+                            'isNewBuilder': 'true',
+                        }
+
+                    response = requests.get('https://1xstavka.ru/LiveFeed/GetGameZip', params=params,  headers=headers)
+                    resultgame = response.json()
+                    keffchik = []
+                    for igra in resultgame['SG']:
+                        pn = igra['PN']
+                        if pn == '3-я Партия':
+                            for keff in igra['GE']:
+                                g = keff['G']
+                                if g == 1:
+                                    k = tot['C']
+                                    keffchik.append(k)
+
+
+
+                            # print(kef)                     
+                            kefp1 = keffchik[0]
+                            kefp2 = keffchik[1] 
+                    
                     if 'P1' in pobed:
                         message = {}
                                         
@@ -320,6 +427,7 @@ def poisk_pred_total(idlive,period,pobed):
                         message['STR'] = 'Игроки равны'
                         message['K1'] = kef1
                         message['K2'] = kef2
+                        message['KST'] = kefp2
                         format_message(message,period)
                         print('Отправлено на форматирование') 
                         try:    
@@ -347,6 +455,7 @@ def poisk_pred_total(idlive,period,pobed):
                         message['STR'] = 'Игроки равны'
                         message['K1'] = kef1
                         message['K2'] = kef2
+                        message['KST'] = kefp1
                         format_message(message,period)
                         print('Отправлено на форматирование') 
                         try:    
