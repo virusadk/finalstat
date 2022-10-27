@@ -129,9 +129,7 @@ def igra(resultline):
                     # print(sgi)
                     # search(id) 
                     search(id)
-                else:
-                    pass
-                    # print('Есть аутсайдер') 
+                
 
                 if (float(kef1) >= 2.5) or (float(kef2) >= 2.5):
                 # if (float(kef1) >= 2) or (float(kef2) >= 2):
