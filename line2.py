@@ -119,7 +119,7 @@ def igra(resultline):
                 kef1 = kef[0]
                 kef2 = kef[1]
                 # print(kef1,'-',kef2)              
-                if ((float(kef1) >= 1.5) and (float(kef1) <= 1.7)) or ((float(kef2) >= 1.5) and (float(kef2) <= 1.7)):
+                if (float(kef1) == float(kef2)):
                     # print('Игроки равны')
                     id = game['I']
                     try:
