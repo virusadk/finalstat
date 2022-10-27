@@ -8,7 +8,7 @@ from telegramchannel import send_channel
 
 def format_message_fora(message,period):
     
-    SN, L, O1, O2,S,CPS,S1,S2,S21,S22,ST,STR = message.values()
+    SN, L, O1, O2,S,CPS,S1,S2,S21,S22,ST,STR,K1,K2 = message.values()
     SP = S + 3*60*60
     Stime = datetime.fromtimestamp(SP).strftime('%d.%m %H:%M')
 
@@ -19,6 +19,7 @@ def format_message_fora(message,period):
                     f'\U0001F9FE 2- Партия:{S21} - {S22}\n' \
             f'\n' \
                 f'\U0001F9FE Стратегия:{STR}\n' \
+                    f'\U0001F9FE Коэффициенты :{K1} - {K2}\n' \
                         f'\n' \
                 f'\U0001F4B5 Ставка: 3-сет {ST}\n' \
                     f'\n' \
@@ -35,7 +36,7 @@ def format_message_fora(message,period):
                           
 def format_message_pred(message,period):
     
-    SN, L, O1, O2,S,CPS,S1,S2,S21,S22,ST = message.values()
+    SN, L, O1, O2,S,CPS,S1,S2,S21,S22,ST,K1,K2 = message.values()
     SP = S + 3*60*60
     Stime = datetime.fromtimestamp(SP).strftime('%d.%m %H:%M')
 
@@ -46,6 +47,7 @@ def format_message_pred(message,period):
                 f'\U0001F9D1 {O1} - {O2}\U0001F9D1 \n' \
                     f'\U0001F9FE 1- Партия:{S1} - {S2}\n' \
                         f'\U0001F9FE 2- Партия:{S21} - {S22}\n' \
+                            f'\U0001F9FE Коэффициенты :{K1} - {K2}\n' \
                 f'\n' \
                 f'\U000026A0 \U000026A0 \U000026A0 \U000026A0 \U000026A0 \n' \
                         \
@@ -68,6 +70,7 @@ def format_message_pred(message,period):
                 f'\U0001F9D1 {O1} - {O2}\U0001F9D1 \n' \
                     f'\U0001F9FE 1- Партия:{S1} - {S2}\n' \
                         f'\U0001F9FE 2- Партия:{S21} - {S22}\n' \
+                            f'\U0001F9FE Коэффициенты :{K1} - {K2}\n' \
                 f'\n' \
                f'\U000026D4 \U000026D4 \U000026D4 \U000026D4 \U000026D4 \n' \
                         \
@@ -90,7 +93,7 @@ def format_message(message,period):
     
     
     
-        SN, L, O1, O2,S,CPS,S1,S2,S21,S22,ST,STR = message.values()
+        SN, L, O1, O2,S,CPS,S1,S2,S21,S22,ST,STR,K1,K2 = message.values()
         SP = S + 3*60*60
         Stime = datetime.fromtimestamp(SP).strftime('%d.%m %H:%M')
    
@@ -101,6 +104,7 @@ def format_message(message,period):
                         f'\U0001F9FE 2- Партия:{S21} - {S22}\n' \
                 f'\n' \
                     f'\U0001F9FE Стратегия:{STR}\n' \
+                        f'\U0001F9FE Коэффициенты :{K1} - {K2}\n' \
                         f'\n' \
                     f'\U0001F4B5 Ставка: 3-сет {ST}\n' \
                         f'\n' \
@@ -157,6 +161,19 @@ def prov_pobed(pobeda,idlive,period):
                         print('Событие было отправлено')
                                     
                     else:
+                        kef = []
+                        for tot in period['E']:
+                            g = tot['G']
+
+                            if g == 1:
+                                k = tot['C']
+                                kef.append(k)
+
+
+
+                        # print(kef)                     
+                        kef1 = kef[0]
+                        kef2 = kef[1]
                         message = {}
                                         
                         message['SN'] = period['SN']
@@ -170,6 +187,8 @@ def prov_pobed(pobeda,idlive,period):
                         
                         message['ST'] = 'П2'
                         message['STR'] = 'Есть фаворит'
+                        message['K1'] = kef1
+                        message['K2'] = kef2
                         format_message_fora(message,period)
                         print('Отправлено на форматирование') 
                         try:    
@@ -219,6 +238,8 @@ def prov_pobed(pobeda,idlive,period):
                         
                         message['ST'] = 'П1'
                         message['STR'] = 'Есть фаворит'
+                        message['K1'] = kef1
+                        message['K2'] = kef2
                         format_message_fora(message,period)
                         print('Отправлено на форматирование') 
                         try:    
@@ -269,6 +290,19 @@ def poisk_pred_total(idlive,period,pobed):
                         print('Событие было отправлено')
                                 
                 else:
+                    kef = []
+                    for tot in period['E']:
+                        g = tot['G']
+
+                        if g == 1:
+                            k = tot['C']
+                            kef.append(k)
+
+
+
+                    # print(kef)                     
+                    kef1 = kef[0]
+                    kef2 = kef[1]
                     if 'P1' in pobed:
                         message = {}
                                         
@@ -284,6 +318,8 @@ def poisk_pred_total(idlive,period,pobed):
                         message['S22'] = period['SC']['PS'][1]['Value']['S2']
                         message['ST'] = 'П2'
                         message['STR'] = 'Игроки равны'
+                        message['K1'] = kef1
+                        message['K2'] = kef2
                         format_message(message,period)
                         print('Отправлено на форматирование') 
                         try:    
@@ -309,6 +345,8 @@ def poisk_pred_total(idlive,period,pobed):
                         message['S22'] = period['SC']['PS'][1]['Value']['S2']
                         message['ST'] = 'П1'
                         message['STR'] = 'Игроки равны'
+                        message['K1'] = kef1
+                        message['K2'] = kef2
                         format_message(message,period)
                         print('Отправлено на форматирование') 
                         try:    
@@ -356,6 +394,19 @@ def preduprezhdenie(idlive,period):
                         print('Предупреждение было отправлено')
                                 
                 else:
+                    kef = []
+                    for tot in period['E']:
+                        g = tot['G']
+
+                        if g == 1:
+                            k = tot['C']
+                            kef.append(k)
+
+
+
+                    # print(kef)                     
+                    kef1 = kef[0]
+                    kef2 = kef[1]
                     message = {}
                                     
                     message['SN'] = period['SN']
@@ -369,6 +420,8 @@ def preduprezhdenie(idlive,period):
                     message['S21'] = period['SC']['PS'][1]['Value']['S1']
                     message['S22'] = period['SC']['PS'][1]['Value']['S2']
                     message['ST'] = 'Возможно будет ставка'
+                    message['K1'] = kef1
+                    message['K2'] = kef2
                     format_message_pred(message,period)
                     print('Отправлено на форматирование') 
                     try:    
@@ -414,6 +467,19 @@ def poisk_predup(idlive,period):
                         print('Отмена была отправлена')
                                 
                 else:
+                    kef = []
+                    for tot in period['E']:
+                        g = tot['G']
+
+                        if g == 1:
+                            k = tot['C']
+                            kef.append(k)
+
+
+
+                    # print(kef)                     
+                    kef1 = kef[0]
+                    kef2 = kef[1]
                     message = {}
                                     
                     message['SN'] = period['SN']
@@ -427,6 +493,8 @@ def poisk_predup(idlive,period):
                     message['S21'] = period['SC']['PS'][1]['Value']['S1']
                     message['S22'] = period['SC']['PS'][1]['Value']['S2']
                     message['ST'] = 'Отмена. Ставки не будет'
+                    message['K1'] = kef1
+                    message['K2'] = kef2
                     format_message_pred(message,period)
                     print('Отправлено на форматирование') 
                     try:    
