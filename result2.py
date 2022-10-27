@@ -604,33 +604,33 @@ def format_mess_static(struerligapro,sfalserligapro,struerligaprominsk,sfalserli
                     f'\n' \
                         f'\U00002198 Роспись по лигам \U00002199 \n' \
         f' \U00002696 Игроки равны \U00002696 \n' \
-        f' \U0001F3C6 Лига Про \U00002705 {struerligapro} \U0000274C {sfalserligapro}'\
-        f' \U0001F3C6 Лига Про. Минск \U00002705 {struerligaprominsk} \U0000274C {sfalserligaprominsk}'\
-        f' \U0001F3C6 Лига Про. Чехия \U00002705 {struerligaprocheh} \U0000274C {sfalserligaprocheh}'\
-        f' \U0001F3C6 Кубок ТТ \U00002705 {struerkuboktt} \U0000274C {sfalserkuboktt}'\
-        f' \U0001F3C6 Кубок ТТ. Германия \U00002705 {struerkubokttg} \U0000274C {sfalserkubokttg}'\
-        f' \U0001F3C6 Кубок ТТ. Италия \U00002705 {struerkuboktti} \U0000274C {sfalserkuboktti}'\
-        f' \U0001F3C6 Кубок ТТ. Латвия \U00002705 {struerkubokttl} \U0000274C {sfalserkubokttl}'\
-        f' \U0001F3C6 Кубок ТТ. Польша \U00002705 {struerkubokttp} \U0000274C {sfalserkubokttp}'\
-        f' \U0001F3C6 Кубок ТТ. США \U00002705 {struerkuboktts} \U0000274C {sfalserkuboktts}'\
-        f' \U0001F3C6 Кубок ТТ. Чехия \U00002705 {struerkubokttch} \U0000274C {sfalserkubokttch}'\
-        f' \U0001F3C6 Кубок ТТ. Эстония \U00002705 {struerkuboktte} \U0000274C {sfalserkuboktte}'\
-        f' \U0001F3C6 Мастерс \U00002705 {struermasters} \U0000274C {sfalsermasters}'\
-        f' \U0001F3C6 Мастерс. Женщины \U00002705 {struermastersz} \U0000274C {sfalsermastersz}'\
-        f' \U0001F3C6 Сетка Кап \U00002705 {struersk} \U0000274C {sfalsersk}'\
-        f' \U0001F3C6 Сетка Кап. Женщины \U00002705 {struerskz} \U0000274C {sfalserskz}'\
-        f' \U0001F3C6 Сетка Кап. Чехия \U00002705 {struerskch} \U0000274C {sfalserskch}'\
-        f' \U0001F3C6 Чемп.Болгарии ITT Cup \U00002705 {struerchbittcup} \U0000274C {sfalserchbittcup}'\
-        f' \U0001F3C6 Чемп.Словакии ITT Cup \U00002705 {struerchsittcup} \U0000274C {sfalserchsittcup}'\
-        f' \U0001F3C6 Art Cup \U00002705 {struerac} \U0000274C {sfalserac}'\
-        f' \U0001F3C6 Pro Spin Series \U00002705 {struerpss} \U0000274C {sfalserpss}'\
-        f' \U0001F3C6 Pro Spin Series. Женщины \U00002705 {struerpssz} \U0000274C {sfalserpssz}'\
-        f' \U0001F3C6 Вин Кап \U00002705 {struervc} \U0000274C {sfalservc}'\
-        f' \U0001F3C6 Вин Кап. Женщины \U00002705 {struervcz} \U0000274C {sfalservcz}'\
-        f' \U0001F3C6 Ком.ч.России \U00002705 {struerkchr} \U0000274C {sfalserkchr}'\
-        f' \U0001F3C6 Ком.ч.России.Женщины \U00002705 {struerkchrz} \U0000274C {sfalserkchrz}'\
-        f' \U0001F3C6 Кубок Мира \U00002705 {struerkm} \U0000274C {sfalserkm}'\
-        f' \U0001F3C6 Кубок Мира. Женщины \U00002705 {struerkmz} \U0000274C {sfalserkmz}'\
+        f' \U0001F3C6 Лига Про \U00002705 {struerligapro} \U0000274C {sfalserligapro}\n'\
+        f' \U0001F3C6 Лига Про. Минск \U00002705 {struerligaprominsk} \U0000274C {sfalserligaprominsk}\n'\
+        f' \U0001F3C6 Лига Про. Чехия \U00002705 {struerligaprocheh} \U0000274C {sfalserligaprocheh}\n'\
+        f' \U0001F3C6 Кубок ТТ \U00002705 {struerkuboktt} \U0000274C {sfalserkuboktt}\n'\
+        f' \U0001F3C6 Кубок ТТ. Германия \U00002705 {struerkubokttg} \U0000274C {sfalserkubokttg}\n'\
+        f' \U0001F3C6 Кубок ТТ. Италия \U00002705 {struerkuboktti} \U0000274C {sfalserkuboktti}\n'\
+        f' \U0001F3C6 Кубок ТТ. Латвия \U00002705 {struerkubokttl} \U0000274C {sfalserkubokttl}\n'\
+        f' \U0001F3C6 Кубок ТТ. Польша \U00002705 {struerkubokttp} \U0000274C {sfalserkubokttp}\n'\
+        f' \U0001F3C6 Кубок ТТ. США \U00002705 {struerkuboktts} \U0000274C {sfalserkuboktts}\n'\
+        f' \U0001F3C6 Кубок ТТ. Чехия \U00002705 {struerkubokttch} \U0000274C {sfalserkubokttch}\n'\
+        f' \U0001F3C6 Кубок ТТ. Эстония \U00002705 {struerkuboktte} \U0000274C {sfalserkuboktte}\n'\
+        f' \U0001F3C6 Мастерс \U00002705 {struermasters} \U0000274C {sfalsermasters}\n'\
+        f' \U0001F3C6 Мастерс. Женщины \U00002705 {struermastersz} \U0000274C {sfalsermastersz}\n'\
+        f' \U0001F3C6 Сетка Кап \U00002705 {struersk} \U0000274C {sfalsersk}\n'\
+        f' \U0001F3C6 Сетка Кап. Женщины \U00002705 {struerskz} \U0000274C {sfalserskz}\n'\
+        f' \U0001F3C6 Сетка Кап. Чехия \U00002705 {struerskch} \U0000274C {sfalserskch}\n'\
+        f' \U0001F3C6 Чемп.Болгарии ITT Cup \U00002705 {struerchbittcup} \U0000274C {sfalserchbittcup}\n'\
+        f' \U0001F3C6 Чемп.Словакии ITT Cup \U00002705 {struerchsittcup} \U0000274C {sfalserchsittcup}\n'\
+        f' \U0001F3C6 Art Cup \U00002705 {struerac} \U0000274C {sfalserac}\n'\
+        f' \U0001F3C6 Pro Spin Series \U00002705 {struerpss} \U0000274C {sfalserpss}\n'\
+        f' \U0001F3C6 Pro Spin Series. Женщины \U00002705 {struerpssz} \U0000274C {sfalserpssz}\n'\
+        f' \U0001F3C6 Вин Кап \U00002705 {struervc} \U0000274C {sfalservc}\n'\
+        f' \U0001F3C6 Вин Кап. Женщины \U00002705 {struervcz} \U0000274C {sfalservcz}\n'\
+        f' \U0001F3C6 Ком.ч.России \U00002705 {struerkchr} \U0000274C {sfalserkchr}\n'\
+        f' \U0001F3C6 Ком.ч.России.Женщины \U00002705 {struerkchrz} \U0000274C {sfalserkchrz}\n'\
+        f' \U0001F3C6 Кубок Мира \U00002705 {struerkm} \U0000274C {sfalserkm}\n'\
+        f' \U0001F3C6 Кубок Мира. Женщины \U00002705 {struerkmz} \U0000274C {sfalserkmz}\n'\
         \
                 f'\n' \
                     f' \U0001F4C8 Есть фаворит \U0001F4C8  \n' \
