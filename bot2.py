@@ -533,31 +533,32 @@ def preduprezhdenie(idlive,period):
                     # print(kef)                     
                     kef1 = kef[0]
                     kef2 = kef[1]
-                    message = {}
+                    if (float(kef1)<=3.5) and (float(kef2)<=3.5):
+                        message = {}
                                     
-                    message['SN'] = period['SN']
-                    message['L'] = period['L']
-                    message['O1'] = period['O1']
-                    message['O2'] = period['O2']
-                    message['S'] = period['S']
-                    message['CPS'] = period['SC']['CPS']
-                    message['S1'] = period['SC']['PS'][0]['Value']['S1']
-                    message['S2'] = period['SC']['PS'][0]['Value']['S2']
-                    message['S21'] = period['SC']['PS'][1]['Value']['S1']
-                    message['S22'] = period['SC']['PS'][1]['Value']['S2']
-                    message['ST'] = 'Возможно будет ставка'
-                    message['K1'] = kef1
-                    message['K2'] = kef2
-                    format_message_pred(message,period)
-                    print('Отправлено на форматирование') 
-                    try:    
-                        with open('pred.txt','a') as file:
-                            file.write(f'\n{idlive}')            
-                            file.close()
-                            print('Событие записано в pred.txt') 
-                    except:
-                        print('Невозможно записать в файл db.txt')
-                    file.close() 
+                        message['SN'] = period['SN']
+                        message['L'] = period['L']
+                        message['O1'] = period['O1']
+                        message['O2'] = period['O2']
+                        message['S'] = period['S']
+                        message['CPS'] = period['SC']['CPS']
+                        message['S1'] = period['SC']['PS'][0]['Value']['S1']
+                        message['S2'] = period['SC']['PS'][0]['Value']['S2']
+                        message['S21'] = period['SC']['PS'][1]['Value']['S1']
+                        message['S22'] = period['SC']['PS'][1]['Value']['S2']
+                        message['ST'] = 'Возможно будет ставка'
+                        message['K1'] = kef1
+                        message['K2'] = kef2
+                        format_message_pred(message,period)
+                        print('Отправлено на форматирование') 
+                        try:    
+                            with open('pred.txt','a') as file:
+                                file.write(f'\n{idlive}')            
+                                file.close()
+                                print('Событие записано в pred.txt') 
+                        except:
+                            print('Невозможно записать в файл db.txt')
+                        file.close() 
     
 
 def poisk_predup(idlive,period):
