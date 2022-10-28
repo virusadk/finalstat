@@ -427,7 +427,7 @@ def poisk_pred_total(idlive,period,pobed):
                     except:
                         kefp1 = ' '
                         kefp2 = ' '
-                    if ('P1' in pobed) and (float(kef1)<=3.5) and (float(kef2)<=3.5):
+                    if ('P1' in pobed) and (float(kef1)<=3.2) and (float(kef2)<=3.2):
                         message = {}
                                         
                         message['SN'] = period['SN']
@@ -455,7 +455,7 @@ def poisk_pred_total(idlive,period,pobed):
                         except:
                             print('Невозможно записать в файл db.txt')
                         file.close() 
-                    if ('P2' in pobed) and (float(kef1)<=3.5) and (float(kef2)<=3.5):
+                    if ('P2' in pobed) and (float(kef1)<=3.2) and (float(kef2)<=3.2):
                         message = {}
                                         
                         message['SN'] = period['SN']
