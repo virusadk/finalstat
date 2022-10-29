@@ -427,7 +427,7 @@ def poisk_pred_total(idlive,period,pobed):
                     except:
                         kefp1 = ' '
                         kefp2 = ' '
-                    if ('P1' in pobed) and (float(kef1)<=3.0) and (float(kef2)<=3.0):
+                    if ('P1' in pobed) and (float(kef1)<=3) and (float(kef2)<=3):
                         message = {}
                                         
                         message['SN'] = period['SN']
