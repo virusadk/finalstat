@@ -643,7 +643,7 @@ def get_1x2(result):
         try:
             
             cps = period['SC']['CPS']
-            if (cps == '2-я Партия'):
+            if (cps == '2-я Партия') and (('Лига Про' in liga) or ('Кубок ТТ' in liga)):
                 print('Проверка счета первой партии')        
                 try:    
                     nf = period['SC']['PS'][0]['Value']['NF']
@@ -663,7 +663,7 @@ def get_1x2(result):
                     idlive = period['I']
                     preduprezhdenie(idlive,period)
                     
-            if (cps == '3-я Партия'):
+            if (cps == '3-я Партия') and (('Лига Про' in liga) or ('Кубок ТТ' in liga)):
                 print('Проверка счета первой партии')        
                 try:    
                     nf = period['SC']['PS'][0]['Value']['NF']
