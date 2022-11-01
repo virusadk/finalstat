@@ -654,11 +654,11 @@ def get_1x2(result):
                 o2 = period['SC']['PS'][0]['Value']['S2']
                 o21 = period['SC']['PS'][1]['Value']['S1']
                 o22 = period['SC']['PS'][1]['Value']['S2']
-                if (int(o1) > int(o2)) and (int(o21) > int(o22)) and (int(o21) >= 9):
+                if (int(o1) > int(o2)) and (int(o21) > int(o22)) and (int(o21) >= 8):
                     print('Счет меньше 16')
                     idlive = period['I']
                     preduprezhdenie(idlive,period)
-                if (int(o1) < int(o2)) and (int(o21) < int(o22)) and (int(o22) >= 9):
+                if (int(o1) < int(o2)) and (int(o21) < int(o22)) and (int(o22) >= 8):
                     print('Счет меньше 16')
                     idlive = period['I']
                     preduprezhdenie(idlive,period)
