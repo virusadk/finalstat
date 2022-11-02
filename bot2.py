@@ -321,7 +321,12 @@ def prov_pobed(pobeda,idlive,period):
     
 
 def poisk_pred_total(idlive,period,pobed):
-    
+    S1 = period['SC']['PS'][0]['Value']['S1']
+    S2 = period['SC']['PS'][0]['Value']['S2']
+    S21 = period['SC']['PS'][1]['Value']['S1']
+    S22 = period['SC']['PS'][1]['Value']['S2']
+    set1 = int(S1) + int(S2)
+    set2 = int(S21) + int(S22)
     with open('retro.txt','r') as file:
                                 
         for item in file.readlines():
@@ -427,7 +432,7 @@ def poisk_pred_total(idlive,period,pobed):
                     except:
                         kefp1 = ' '
                         kefp2 = ' '
-                    if ('P1' in pobed) and (float(kef1)<=3.0) and (float(kef2)<=3.0):
+                    if ('P1' in pobed) and (float(kef1)<=4.5) and (float(kef2)<=4.5) and ((int(set1) >= 19) or (int(set2) >= 19)):
                         message = {}
                                         
                         message['SN'] = period['SN']
@@ -455,7 +460,7 @@ def poisk_pred_total(idlive,period,pobed):
                         except:
                             print('Невозможно записать в файл db.txt')
                         file.close() 
-                    if ('P2' in pobed) and (float(kef1)<=3.0) and (float(kef2)<=3.0):
+                    if ('P2' in pobed) and (float(kef1)<=4.5) and (float(kef2)<=4.5) and ((int(set1) >= 19) or (int(set2) >= 19)):
                         message = {}
                                         
                         message['SN'] = period['SN']
