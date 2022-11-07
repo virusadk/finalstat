@@ -432,7 +432,7 @@ def poisk_pred_total(idlive,period,pobed):
                     except:
                         kefp1 = ' '
                         kefp2 = ' '
-                    if ('P1' in pobed) and (float(kef1)<=4.5) and (float(kef2)<=4.5) and (int(set2) >= 20) and (float(kefp2) > 1.6):
+                    if ('P1' in pobed) and (float(kef1)<=5.1) and (float(kef2)<=5.1) and (int(set2) >= 20) and (float(kefp2) > 1.6):
                        
                         message = {}
                                         
@@ -461,7 +461,7 @@ def poisk_pred_total(idlive,period,pobed):
                         except:
                             print('Невозможно записать в файл db.txt')
                         file.close() 
-                    if ('P2' in pobed) and (float(kef1)<=4.5) and (float(kef2)<=4.5) and (int(set2) >= 20) and (float(kefp1) > 1.6):
+                    if ('P2' in pobed) and (float(kef1)<=5.1) and (float(kef2)<=5.1) and (int(set2) >= 20) and (float(kefp1) > 1.6):
                       
                         message = {}
                                         
@@ -490,64 +490,7 @@ def poisk_pred_total(idlive,period,pobed):
                         except:
                             print('Невозможно записать в файл db.txt')
                         file.close() 
-                    if ('P2' in pobed) and (float(kef1)<=4.5) and (float(kef2)<=4.5) and (int(set2) < 20) and (float(kefp1) > 1.6):
-
-                        message = {}
-                                        
-                        message['SN'] = period['SN']
-                        message['L'] = period['L']
-                        message['O1'] = period['O1']
-                        message['O2'] = period['O2']
-                        message['S'] = period['S']
-                        message['CPS'] = period['SC']['CPS']
-                        message['S1'] = period['SC']['PS'][0]['Value']['S1']
-                        message['S2'] = period['SC']['PS'][0]['Value']['S2']
-                        message['S21'] = period['SC']['PS'][1]['Value']['S1']
-                        message['S22'] = period['SC']['PS'][1]['Value']['S2']
-                        message['ST'] = 'П2'
-                        message['STR'] = 'Игроки равны'
-                        message['K1'] = kef1
-                        message['K2'] = kef2
-                        message['KST'] = kefp2
-                        format_message(message,period)
-                        print('Отправлено на форматирование') 
-                        try:    
-                            with open('db.txt','a') as file:
-                                file.write(f'\n{idlive}-P2')            
-                                file.close()
-                                print('Событие записано в db.txt') 
-                        except:
-                            print('Невозможно записать в файл db.txt')
-                        file.close() 
-                    if ('P1' in pobed) and (float(kef1)<=4.5) and (float(kef2)<=4.5) and (int(set2) < 20) and (float(kefp1) > 1.6):
-                      
-                        message = {}
-                                        
-                        message['SN'] = period['SN']
-                        message['L'] = period['L']
-                        message['O1'] = period['O1']
-                        message['O2'] = period['O2']
-                        message['S'] = period['S']
-                        message['CPS'] = period['SC']['CPS']
-                        message['S1'] = period['SC']['PS'][0]['Value']['S1']
-                        message['S2'] = period['SC']['PS'][0]['Value']['S2']
-                        message['S21'] = period['SC']['PS'][1]['Value']['S1']
-                        message['S22'] = period['SC']['PS'][1]['Value']['S2']
-                        message['ST'] = 'П1'
-                        message['STR'] = 'Игроки равны'
-                        message['K1'] = kef1
-                        message['K2'] = kef2
-                        message['KST'] = kefp1
-                        format_message(message,period)
-                        print('Отправлено на форматирование') 
-                        try:    
-                            with open('db.txt','a') as file:
-                                file.write(f'\n{idlive}-P1')            
-                                file.close()
-                                print('Событие записано в db.txt') 
-                        except:
-                            print('Невозможно записать в файл db.txt')
-                        file.close() 
+                     
             
             
     
