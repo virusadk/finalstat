@@ -51,7 +51,7 @@ def prov_result(period,idl):
                     print('Проверяем результат ТБ')
                     o31 = period['SC']['PS'][2]['Value']['S1']
                     o32 = period['SC']['PS'][2]['Value']['S2']
-                    if int(o31) > int(o32):
+                    if (int(o32) - int(o31)) <= 3:
                         print('ТБ есть. Отправляется сообщение')
                         message = {}
                                                 
@@ -68,12 +68,12 @@ def prov_result(period,idl):
                         message['S22'] = period['SC']['PS'][1]['Value']['S2']
                         message['S31'] = period['SC']['PS'][2]['Value']['S1']
                         message['S32'] = period['SC']['PS'][2]['Value']['S2']
-                        message['ST'] = '3 сет: П1'
+                        message['ST'] = '3 сет: Ф1 +3.5'
                         message['STR'] = 'Игроки равны'
                         message['RES'] = 'Ставка зашла'
                         format_message_result(message,idl,period)
                         print('Отправлено на форматирование результата') 
-                    if int(o31) < int(o32):
+                    if (int(o32) - int(o31)) > 3:
                         print('ТБ нет. Отправляется сообщение')
                         message = {}
                                                 
@@ -90,7 +90,7 @@ def prov_result(period,idl):
                         message['S22'] = period['SC']['PS'][1]['Value']['S2']
                         message['S31'] = period['SC']['PS'][2]['Value']['S1']
                         message['S32'] = period['SC']['PS'][2]['Value']['S2']
-                        message['ST'] = '3 сет: П1'
+                        message['ST'] = '3 сет: Ф1 +3.5'
                         message['STR'] = 'Игроки равны'
                                 
                         message['RES'] = 'Ставка проиграла'
@@ -101,7 +101,7 @@ def prov_result(period,idl):
                     print('Проверяем результат ТБ')
                     o31 = period['SC']['PS'][2]['Value']['S1']
                     o32 = period['SC']['PS'][2]['Value']['S2']
-                    if int(o32) > int(o31):
+                    if (int(o31) - int(o32)) <= 3:
                         print('ТM есть. Отправляется сообщение')
                         message = {}
                                                 
@@ -118,12 +118,12 @@ def prov_result(period,idl):
                         message['S22'] = period['SC']['PS'][1]['Value']['S2']
                         message['S31'] = period['SC']['PS'][2]['Value']['S1']
                         message['S32'] = period['SC']['PS'][2]['Value']['S2']
-                        message['ST'] = '3 сет: П2'
+                        message['ST'] = '3 сет: Ф2 +3.5'
                         message['STR'] = 'Игроки равны'
                         message['RES'] = 'Ставка зашла'
                         format_message_result(message,idl,period)
                         print('Отправлено на форматирование результата') 
-                    if int(o31) > int(o32):
+                    if (int(o31) - int(o32)) > 3:
                         print('ТM нет. Отправляется сообщение')
                         message = {}
                                                 
@@ -140,7 +140,7 @@ def prov_result(period,idl):
                         message['S22'] = period['SC']['PS'][1]['Value']['S2']
                         message['S31'] = period['SC']['PS'][2]['Value']['S1']
                         message['S32'] = period['SC']['PS'][2]['Value']['S2']
-                        message['ST'] = '3 сет: П2'
+                        message['ST'] = '3 сет: Ф2 +3.5'
                         message['STR'] = 'Игроки равны'        
                         message['RES'] = 'Ставка проиграла'
                         format_message_result(message,idl,period)
